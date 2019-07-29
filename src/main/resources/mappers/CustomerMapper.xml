@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.simplejava.customer.mappers.CustomerMapper'>
+
+
+	<select id='findAllCustomers'
+		resultType='com.simplejava.customer.Customer'>
+		SELECT id, first_name, last_name, cell_phone, email_id
+		from CUSTOMER
+	</select>
+
+	<select id='findCustomerByEmailId'
+	 parameterType='String'
+		resultType='com.simplejava.customer.Customer'>
+			SELECT id, first_name, last_name, cell_phone, email_id
+		from CUSTOMER
+		WHERE email_id = #{emailId}
+	</select>
+
+	<!-- Instead of referencing Fully Qualified Class Names we can register 
+		Aliases in MyBatisConfiguration and use Alias names. -->
+
+	<select id='findCustomerByFirstName'
+		parameterType='com.simplejava.customer.Customer'
+		resultType='com.simplejava.customer.Customer'>
+		select id, first_name, last_name, cell_phone, email_id
+		from CUSTOMER
+		WHERE first_name = #{firstName} 
+	</select>
+
+	<insert id='insertCustomer' parameterType='com.simplejava.customer.Customer'
+		useGeneratedKeys='true' keyProperty='id'>
+		INSERT INTO CUSTOMER(first_name, last_name, cell_phone, email_id)
+		VALUES(#{firstName}, #{lastName}, #{cellPhone},#{emailId})
+	</insert>
+	
+	<update id='updateCustomer' parameterType='com.simplejava.customer.Customer'>
+    UPDATE CUSTOMER 
+    SET
+     first_name= #{firstName},
+     last_name= #{lastName},
+     cell_phone= #{cellPhone},
+     email_id = #{emailId}
+     WHERE id = #{id}
+  </update>
+  
+   <delete id='deleteCustomer' parameterType='long'>
+    DELETE FROM CUSTOMER WHERE id = #{id}
+  </delete>
+
+</mapper>

@@ -1,0 +1,45 @@
+-- Below id the base url
+
+
+http://localhost:8082/api/customer
+
+**********************************************************
+--- Retrieve customer by emailid
+http://localhost:8082/api/customer/kdedrick3@xing.com
+
+-- for firstname
+http://localhost:8082/api/customer/firstname?firstName=Ailee
+
+*****************************************************
+Create request
+
+Method: Post
+http://localhost:8082/api/customer
+
+{
+	"firstName": "Tanveer",
+	"lastName": "Haider",
+	"cellNumber": "402-235-9000",
+	"emailId": "thaider0@altervista.org"
+}
+************************************************************************************************************************************
+update request
+
+Method : PUT
+
+http://localhost:8082/api/customer/13
+{
+	"firstName": "Tanveer",
+	"lastName": "Haider",
+	"cellNumber": "402-235-9000",
+	"emailId": "thaider0@gmail.com"
+}
+*********************************************************
+
+delete request:
+
+method : Delete
+
+http://localhost:8082/api/customer/11
+
+*******************************************************************8
